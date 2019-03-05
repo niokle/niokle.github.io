@@ -34,7 +34,7 @@ $(document).ready(function() {
       url: requestUrl,
       method: 'GET',
       success: handleDatatableRender,
-      headers: {"Access-Control-Allow-Origin": "*"}
+      crossDomain: true
     });
   }
 
@@ -51,11 +51,11 @@ $(document).ready(function() {
       processData: false,
       contentType: "application/json; charset=utf-8",
       dataType: 'json',
+      crossDomain: true,
       data: JSON.stringify({
         id: taskId,
         title: taskTitle,
-        content: taskContent,
-        headers: {"Access-Control-Allow-Origin": "*"}
+        content: taskContent
       }),
       success: function(data) {
         parentEl.attr('data-task-id', data.id).toggleClass('datatable__row--editing');
@@ -75,7 +75,7 @@ $(document).ready(function() {
         taskId: taskId
       }),
       method: 'DELETE',
-      headers: {"Access-Control-Allow-Origin": "*"},
+      crossDomain: true,
       success: function() {
         parentEl.slideUp(400, function() { parentEl.remove(); });
       }
@@ -96,11 +96,11 @@ $(document).ready(function() {
       processData: false,
       contentType: "application/json; charset=utf-8",
       dataType: 'json',
+      crossDomain: true,
       data: JSON.stringify({
         title: taskTitle,
         content: taskContent
       }),
-      headers: {"Access-Control-Allow-Origin": "*"},
       complete: function(data) {
         if(data.status === 200) {
           getAllTasks();
