@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-  var apiRoot = 'https://boiling-journey-64465.herokuapp.com/v1/task/';
+  var apiRoot = 'https://cors-anywhere.herokuapp.com/https://boiling-journey-64465.herokuapp.com/v1/task/';
   var datatableRowTemplate = $('[data-datatable-row-template]').children()[0];
   var tasksContainer = $('[data-tasks-container]');
 
@@ -33,9 +33,7 @@ $(document).ready(function() {
     $.ajax({
       url: requestUrl,
       method: 'GET',
-      success: handleDatatableRender,
-      crossDomain: true,
-      dataType: 'jsonp'
+      success: handleDatatableRender
     });
   }
 
@@ -51,8 +49,7 @@ $(document).ready(function() {
       method: "PUT",
       processData: false,
       contentType: "application/json; charset=utf-8",
-      dataType: 'jsonp',
-      crossDomain: true,
+      dataType: 'json',
       data: JSON.stringify({
         id: taskId,
         title: taskTitle,
@@ -76,8 +73,6 @@ $(document).ready(function() {
         taskId: taskId
       }),
       method: 'DELETE',
-      crossDomain: true,
-      dataType: 'jsonp',
       success: function() {
         parentEl.slideUp(400, function() { parentEl.remove(); });
       }
@@ -97,8 +92,7 @@ $(document).ready(function() {
       method: 'POST',
       processData: false,
       contentType: "application/json; charset=utf-8",
-      dataType: 'jsonp',
-      crossDomain: true,
+      dataType: 'json',
       data: JSON.stringify({
         title: taskTitle,
         content: taskContent
