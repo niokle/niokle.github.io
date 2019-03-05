@@ -34,7 +34,8 @@ $(document).ready(function() {
       url: requestUrl,
       method: 'GET',
       success: handleDatatableRender,
-      crossDomain: true
+      crossDomain: true,
+      dataType: 'jsonp'
     });
   }
 
@@ -50,7 +51,7 @@ $(document).ready(function() {
       method: "PUT",
       processData: false,
       contentType: "application/json; charset=utf-8",
-      dataType: 'json',
+      dataType: 'jsonp',
       crossDomain: true,
       data: JSON.stringify({
         id: taskId,
@@ -76,6 +77,7 @@ $(document).ready(function() {
       }),
       method: 'DELETE',
       crossDomain: true,
+      dataType: 'jsonp',
       success: function() {
         parentEl.slideUp(400, function() { parentEl.remove(); });
       }
@@ -95,7 +97,7 @@ $(document).ready(function() {
       method: 'POST',
       processData: false,
       contentType: "application/json; charset=utf-8",
-      dataType: 'json',
+      dataType: 'jsonp',
       crossDomain: true,
       data: JSON.stringify({
         title: taskTitle,
