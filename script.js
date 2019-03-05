@@ -33,7 +33,8 @@ $(document).ready(function() {
     $.ajax({
       url: requestUrl,
       method: 'GET',
-      success: handleDatatableRender
+      success: handleDatatableRender,
+      headers: {"Access-Control-Allow-Origin": "*"}
     });
   }
 
@@ -53,7 +54,8 @@ $(document).ready(function() {
       data: JSON.stringify({
         id: taskId,
         title: taskTitle,
-        content: taskContent
+        content: taskContent,
+        headers: {"Access-Control-Allow-Origin": "*"}
       }),
       success: function(data) {
         parentEl.attr('data-task-id', data.id).toggleClass('datatable__row--editing');
@@ -73,6 +75,7 @@ $(document).ready(function() {
         taskId: taskId
       }),
       method: 'DELETE',
+      headers: {"Access-Control-Allow-Origin": "*"},
       success: function() {
         parentEl.slideUp(400, function() { parentEl.remove(); });
       }
@@ -97,6 +100,7 @@ $(document).ready(function() {
         title: taskTitle,
         content: taskContent
       }),
+      headers: {"Access-Control-Allow-Origin": "*"},
       complete: function(data) {
         if(data.status === 200) {
           getAllTasks();
