@@ -1,6 +1,6 @@
 $(document).ready(function() {
-  const apiRoot = 'https://ancient-bastion-65075.herokuapp.com/v1/task/';
-  const trelloApiRoot = 'https://ancient-bastion-65075.herokuapp.com/v1/trello/';
+  const apiRoot = 'https://secret-lowlands-80376.herokuapp.com/v1/task/';
+  const trelloApiRoot = 'https://secret-lowlands-80376.herokuapp.com/v1/trello/';
   const datatableRowTemplate = $('[data-datatable-row-template]').children()[0];
   const $tasksContainer = $('[data-tasks-container]');
 
